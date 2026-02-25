@@ -1,15 +1,21 @@
 # Skill: Manuscript Review
 
-Run a structured review before draft circulation.
+Run a referee-style manuscript review before circulation.
 
-## Dimensions
+## Review dimensions
 
-- Argument clarity
-- Identification credibility
-- Econometric specification
-- Citation completeness
-- Writing quality and notation consistency
+- question clarity and contribution
+- identification credibility
+- econometric specification and inference
+- literature positioning
+- writing quality and notation consistency
+- table/figure interpretability
 
-## Save to
+## Required output
 
-- `quality_reports/paper_review_<draft>.md`
+Save to `quality_reports/paper_review_<draft>.md` with:
+
+- summary recommendation
+- major concerns (with concrete fixes)
+- minor concerns
+- 3-5 likely referee objections

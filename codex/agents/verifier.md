@@ -1,17 +1,34 @@
 # Agent Checklist: Verifier
 
-Use for final verification before completion.
+Final gate before task completion.
 
 ## Verify by file type
 
-- `.R`: run script, check outputs, confirm deterministic behavior where required
-- `.qmd`: render and confirm output file exists with resolved assets
-- `.tex`: compile and check for critical warnings/errors
+### `.R`
+
+- run script with `Rscript`
+- confirm expected output files exist and are non-empty
+- confirm deterministic behavior where required (`set.seed`, reproducible outputs)
+
+### `.qmd`
+
+- render successfully
+- confirm output file exists
+- verify images/widgets resolve
+- check for obvious overflow risk
+
+### `.tex`
+
+- compile successfully
+- check for critical warnings (undefined citations, severe overfull hbox)
+- confirm output PDF exists
 
 ## Report format
 
-- file checked
-- command run
+For each file:
+
+- file path
+- commands executed
 - pass/fail
 - warnings
-- follow-up actions
+- unresolved blockers

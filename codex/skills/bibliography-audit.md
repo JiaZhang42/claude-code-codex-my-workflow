@@ -1,14 +1,19 @@
 # Skill: Bibliography Audit
 
-Cross-check citations against `assets/bibliography/references.bib`.
+Cross-check manuscript/slide citations against bibliography.
+
+## Sources
+
+- `assets/bibliography/references.bib`
+- citations in `manuscript/`, `presentations/beamer/`, `presentations/quarto/`
 
 ## Checks
 
-- missing bibliography entries
-- unused bibliography entries
-- malformed entry fields
-- key typos and near-matches
+- missing bibliography entries (critical)
+- unused entries (informational)
+- malformed bib fields
+- key typos / near-collisions
 
-## Save to
+## Output
 
-- `quality_reports/bibliography_audit_<date>.md`
+Save to `quality_reports/bibliography_audit_<date>.md`.

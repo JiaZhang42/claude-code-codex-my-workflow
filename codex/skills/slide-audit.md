@@ -1,15 +1,22 @@
 # Skill: Slide Audit
 
-Audit slides with research-grade presentation standards.
+Run comprehensive quality audit for seminar slides.
 
-## Checks
+## Audit dimensions
 
 - overflow and readability
 - notation/citation consistency
+- narrative pacing and logical flow
 - visual hierarchy and spacing
-- narrative flow and pacing
-- Beamer/Quarto parity (if dual format)
+- figure legibility and sizing
+- Beamer/Quarto parity when dual format exists
 
-## Save to
+## Severity levels
 
-- `quality_reports/<deck>_slide_audit.md`
+- Critical: blocks presentation readiness
+- Major: should fix before delivery
+- Minor: polish improvements
+
+## Output
+
+Save to `quality_reports/<deck>_slide_audit.md`.

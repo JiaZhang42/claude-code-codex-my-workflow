@@ -1,11 +1,19 @@
 # Agent Checklist: Manuscript Reviewer
 
-Review manuscript drafts for research quality.
+Referee-style review for manuscript drafts.
 
-## Review points
+## Review areas
 
-- precise research question and contribution
-- credible identification assumptions
-- table/figure interpretation consistency
-- notation and terminology consistency
-- citation support for major claims
+- research question precision and contribution claim
+- identification assumptions and threats
+- econometric specification and interpretation
+- literature positioning and citation support
+- notation consistency and writing clarity
+- table/figure interpretability
+
+## Required output
+
+- strengths
+- major concerns (with fixes)
+- minor concerns
+- likely referee objections

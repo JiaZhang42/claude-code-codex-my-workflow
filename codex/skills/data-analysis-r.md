@@ -1,17 +1,25 @@
 # Skill: Data Analysis (R)
 
-Execute a reproducible R analysis pipeline.
+Execute an end-to-end reproducible analysis script.
 
 ## Requirements
 
-- Libraries at top
-- `set.seed()` once if stochastic
-- No hardcoded absolute paths
-- Explicit output paths
-- Save key objects as RDS
+- libraries declared at top
+- single `set.seed()` when stochastic
+- no hardcoded absolute paths
+- deterministic output paths
+- key objects saved as RDS
+
+## Pipeline
+
+1. setup and dependency load
+2. data prep and diagnostics
+3. estimation/specification
+4. output generation (tables/figures/artifacts)
+5. verification and scoring
 
 ## Verification
 
-- Script exits successfully
-- Outputs exist and are non-empty
-- Quality score >= 80
+- script exits cleanly
+- expected outputs exist and are non-empty
+- quality score >= 80

@@ -1,26 +1,32 @@
 # Seminar Slides Workflow
 
-Generate seminar slides from research outputs with full audit rigor.
+Create seminar slides from manuscript results without lowering standards.
 
-## Scope
+## Inputs
 
-- `presentations/beamer/**`
-- `presentations/quarto/**`
-- `assets/figures/**`
-- `manuscript/**`
+- manuscript draft
+- validated figures/tables
 
 ## Steps
 
-1. Draft slide narrative from manuscript contribution and evidence.
-2. Ensure notation/citation consistency with manuscript.
-3. Run full slide audits:
-   - proofreading
-   - visual layout checks
-   - pedagogy/flow checks
-   - Beamer/Quarto parity checks when both formats exist
-4. Compile/render and verify assets are resolved.
-5. Score and block if quality score < 80.
+1. Build story arc: question -> design -> key results -> contribution.
+2. Draft slides in `presentations/beamer/` and/or `presentations/quarto/`.
+3. Run audit stack:
+   - `codex/skills/slide-audit.md`
+   - `codex/agents/slide-reviewer.md`
+   - `codex/agents/proofreader.md`
+4. If dual format, run `codex/agents/parity-checker.md`.
+5. Render/compile and verify all assets.
+6. Optional: run `codex/skills/adversarial-pass.md` for high-stakes talks.
 
-## Non-negotiable
+## Deliverables
 
-Seminar scope does not reduce quality standards.
+- presentation sources
+- published render artifacts in `presentations/published/`
+- slide audit report in `quality_reports/`
+
+## Exit criteria
+
+- audit critical issues resolved
+- render/compile passes
+- quality score >= 80

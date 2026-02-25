@@ -1,15 +1,20 @@
 # Skill: Idea Sprint
 
-Convert a rough topic into 3-5 testable research questions.
+Convert a rough topic into a ranked set of testable research directions.
 
-## Output
+## Output requirements
 
-- Problem statement
-- Ranked research questions (feasibility + contribution)
-- Identification sketch for top 2
-- Data requirements and key threats
+- problem statement and stakes
+- 3-5 research questions
+- hypothesis + identification sketch for each
+- feasibility and contribution ranking
+- recommended lead direction with immediate next actions
 
 ## Save to
 
 - `research/ideas/idea_<topic>/README.md`
-- `quality_reports/specs/<date>_<topic>_ideation.md`
+- `quality_reports/research_ideation_<topic>.md`
+
+## Review standard
+
+Reject ideas that lack both a plausible identification path and a feasible data path.

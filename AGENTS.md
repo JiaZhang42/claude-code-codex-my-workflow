@@ -18,17 +18,19 @@ This is a research-first workflow project.
 5. Record decisions/checks/risks in `quality_reports/session_logs/`.
 6. Do not revert unrelated user changes.
 
-## Routing
+## Stage Routing
 
-Use `codex/` as the runtime logic layer.
+Use stage workflows in `codex/workflows/`:
 
-- research coding: `codex/workflows/research-orchestrator.md`
-- literature review: `codex/workflows/literature-review.md`
-- replication: `codex/workflows/replication-first.md`
-- seminar slides: `codex/workflows/seminar-slides.md`
+1. exploration -> `exploration.md`
+2. ideation -> `ideation.md`
+3. literature review -> `literature-review.md`
+4. replication -> `replication-first.md`
+5. empirical analysis -> `empirical-analysis.md`
+6. manuscript drafting -> `manuscript-draft.md`
+7. seminar slides -> `seminar-slides.md`
 
-Use specialist checklists in `codex/agents/` when reviewing.
-Use reusable execution playbooks in `codex/skills/`.
+Use `codex/skills/` for repeatable task playbooks and `codex/agents/` for specialist audits.
 
 ## Path Priorities
 

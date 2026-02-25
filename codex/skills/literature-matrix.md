@@ -1,17 +1,23 @@
 # Skill: Literature Matrix
 
-Build a paper-by-paper evidence matrix for a topic.
+Build a paper-by-paper evidence matrix for synthesis and gap detection.
 
 ## Required columns
 
-- Citation
-- Question
-- Data
-- Method
-- Identification assumptions
-- Key estimates
-- Limitations
-- Relevance for current project
+- citation
+- question
+- data
+- method
+- identifying assumptions
+- key estimate/result
+- limitations
+- relevance to current project
+
+## Additional columns (recommended)
+
+- external validity concerns
+- robustness depth
+- replication availability
 
 ## Save to
 

@@ -1,23 +1,31 @@
 # Research Orchestrator
 
-Default loop for coding, analysis, and manuscript-support work.
+Default loop for manuscript, code, and analysis work.
 
 ## Scope
 
 - `manuscript/**`
-- `scripts/**/*.R`
 - `research/**`
+- `scripts/**/*.R`
 - `assets/figures/**`
 
 ## Loop
 
-1. Plan for non-trivial or multi-file changes.
-2. If ambiguity exists, write a requirements spec in `quality_reports/specs/`.
-3. Implement in small verified increments.
-4. Execute verification commands (run code, check outputs, compile if needed).
-5. Score quality using `scripts/quality_score.py` for `.R`, `.qmd`, `.tex` targets.
-6. Record decisions, checks, and unresolved risks in `quality_reports/session_logs/`.
+1. Plan non-trivial changes.
+2. If requirements are ambiguous, run `codex/skills/spec-first.md` and save spec.
+3. Implement in small increments.
+4. Verify with real commands:
+   - script execution
+   - render/compile
+   - file existence and sanity checks
+5. Run specialist audits when relevant:
+   - R: `codex/agents/r-reviewer.md`
+   - manuscript: `codex/agents/manuscript-reviewer.md`
+6. Score quality via `scripts/quality_score.py` where applicable.
+7. Log outcomes and residual risks in `quality_reports/session_logs/`.
 
-## Completion gate
+## Completion criteria
 
-- Block completion if score < 80 or verification fails.
+- verification pass
+- no unresolved critical defects
+- quality score >= 80

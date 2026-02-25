@@ -1,16 +1,23 @@
-# Research Explorations
+# Explorations
 
-Sandbox for early-stage experiments.
+Low-commitment sandbox for uncertain or early-stage experiments.
 
-## Lifecycle
+## Use this when
 
-1. Start in `research/explorations/<project>/`
-2. Decide to either:
-   - promote into `research/ideas/`, `research/literature/`, or `research/replications/`
-   - archive under `research/explorations/ARCHIVE/`
+- the question is still fuzzy
+- you are testing alternative mechanisms quickly
+- you expect failed branches and discarded outputs
 
-## Minimum structure
+## Structure per exploration
 
-- `README.md` (goal, current status, decisions)
-- `scripts/` (prototype code)
-- `output/` (intermediate results)
+- `README.md`: goal, current status, next test
+- `scripts/`: prototype code
+- `output/`: intermediate artifacts
+
+## Promotion rule
+
+When a direction becomes coherent and defensible, graduate it to `research/ideas/idea_<topic>/`.
+
+## Archiving
+
+Move abandoned or completed exploratory projects to `research/explorations/ARCHIVE/` with a short rationale.

@@ -1,11 +1,15 @@
 # Agent Checklist: Slide Reviewer
 
-Review seminar decks without reducing standards.
+Review seminar slides at full quality standards.
 
-## Review points
+## Checks
 
-- readability and overflow risk
-- logical narrative progression
+- readability and overflow
+- narrative progression
 - notation and citation consistency with manuscript
-- figure legibility and caption adequacy
-- no hidden parity regressions between Beamer and Quarto versions
+- figure legibility and label quality
+- pacing and information density
+
+## Dual-format note
+
+When both Beamer and Quarto versions exist, request parity check via `codex/agents/parity-checker.md`.

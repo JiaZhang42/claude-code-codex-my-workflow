@@ -1,21 +1,27 @@
 # Codex Workflow Layer
 
-This directory contains the runtime workflow logic for Codex.
+This directory contains the runtime logic for Codex in this repository.
 
-## What controls behavior
+## How to use this layer
 
-- `AGENTS.md`: short constitution and routing policy (always loaded)
-- `codex/workflows/*.md`: end-to-end execution loops by task type
-- `codex/skills/*.md`: reusable playbooks for common tasks
-- `codex/agents/*.md`: specialist review checklists
+1. `AGENTS.md` sets non-negotiables and routing.
+2. Select a stage workflow in `codex/workflows/`.
+3. Use supporting skills in `codex/skills/`.
+4. Run specialist audits with `codex/agents/`.
+5. Save evidence in `quality_reports/`.
 
-## Task routing
+## Stage workflows
 
-- Ideation/brainstorming: `codex/workflows/research-orchestrator.md` + `codex/skills/idea-sprint.md`
-- Literature review: `codex/workflows/literature-review.md`
-- Replication: `codex/workflows/replication-first.md`
-- Seminar slides from research: `codex/workflows/seminar-slides.md`
+1. `exploration.md`
+2. `ideation.md`
+3. `literature-review.md`
+4. `replication-first.md`
+5. `empirical-analysis.md`
+6. `manuscript-draft.md`
+7. `seminar-slides.md`
 
-## Scaffolding scripts
+## Skills and agents
 
-Use the helpers in `scripts/codex/` to initialize workspaces and report stubs.
+- Skills are execution playbooks.
+- Agents are review checklists.
+- Both are Codex-native references, not Claude runtime artifacts.

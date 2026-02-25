@@ -1,13 +1,19 @@
 # Skill: Replication Audit
 
-Compare baseline replication outputs against published targets.
+Compare reproduced outputs against published targets.
 
 ## Checks
 
-- Numeric tolerance pass/fail by target
-- Specification parity (sample, controls, fixed effects, clustering)
-- Determinism/reproducibility (`set.seed`, package versions)
+- target-by-target tolerance pass/fail
+- sample/specification parity
+- SE/inference parity
+- deterministic reproducibility checks
 
-## Save to
+## Output
 
-- `quality_reports/<paper>_replication_report.md`
+`quality_reports/<paper>_replication_report.md` with:
+
+- summary status: REPLICATED / PARTIAL / FAILED
+- comparison table (paper vs reproduced vs diff)
+- discrepancy investigation notes
+- environment metadata (versions, seed policy)

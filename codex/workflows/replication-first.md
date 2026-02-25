@@ -1,34 +1,40 @@
 # Replication-First Workflow
 
-Replicate baseline published results before any extension.
+Replicate published baseline before any extension.
 
-## Scope
+## Inputs
 
-- `research/replications/**`
-- `scripts/**/*.R`
+- original paper + replication package
+- target table/figure values from publication
 
-## Phase 1: Targets
+## Steps
 
-- Inventory the original package and record target values in:
-  `quality_reports/<paper>_replication_targets.md`
+1. Initialize workspace: `bash scripts/codex/new-replication.sh <paper-slug>`.
+2. Record targets in `quality_reports/<paper>_replication_targets.md`.
+3. Translate baseline scripts exactly (no refactors initially).
+4. Run baseline and compare outputs to targets.
+5. Apply tolerance checks:
+   - counts/N: exact
+   - point estimates: abs diff < 0.01
+   - standard errors: abs diff < 0.05
+   - significance category: match
+6. If mismatch, isolate first divergence and document investigation.
+7. Only after pass, create extension scripts separated from baseline.
 
-## Phase 2: Baseline execution
+## Common translation traps
 
-- Match original sample/specification/SE computation exactly.
-- Save intermediate artifacts and reproducible scripts.
+- Stata clustering defaults vs R package defaults
+- implicit sample filters in original scripts
+- fixed-effects absorption differences
+- bootstrap settings (reps, seeds, type)
 
-## Phase 3: Tolerance checks
+## Deliverables
 
-Default tolerances:
+- `quality_reports/<paper>_replication_targets.md`
+- `quality_reports/<paper>_replication_report.md`
+- reproducible baseline scripts in `research/replications/replication_<paper>/`
 
-- counts/N: exact
-- point estimates: absolute diff < 0.01
-- standard errors: absolute diff < 0.05
-- significance category: match
+## Exit criteria
 
-Write results to `quality_reports/<paper>_replication_report.md`.
-
-## Phase 4: Extensions
-
-- Only after all baseline targets pass.
-- Keep baseline and extension code paths separated.
+- baseline status: REPLICATED
+- extension work starts only after baseline pass
