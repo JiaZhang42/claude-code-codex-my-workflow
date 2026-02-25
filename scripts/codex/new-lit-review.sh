@@ -8,7 +8,7 @@ fi
 
 slug="$1"
 date_str="$(date +%F)"
-base="explorations/lit_review_${slug}"
+base="research/literature/lit_review_${slug}"
 
 mkdir -p "$base"
 

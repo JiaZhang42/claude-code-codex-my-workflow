@@ -8,7 +8,7 @@ fi
 
 slug="$1"
 date_str="$(date +%F)"
-base="explorations/replication_${slug}"
+base="research/replications/replication_${slug}"
 
 mkdir -p "$base"/{data,code,output,notes}
 

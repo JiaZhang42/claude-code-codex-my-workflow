@@ -1,39 +1,34 @@
-# Replication-First Workflow (Codex)
+# Replication-First Workflow
 
-Core principle: replicate original published results before any extension.
+Replicate baseline published results before any extension.
 
-## Phase 1: Inventory and Targets
+## Scope
 
-- Read the paper and replication README.
-- Inventory data/scripts/expected outputs.
-- Record gold-standard targets (table/figure/value/SE/notes).
-- Save targets to `quality_reports/<paper>_replication_targets.md`.
+- `research/replications/**`
+- `scripts/**/*.R`
 
-## Phase 2: Translate and Execute
+## Phase 1: Targets
 
-- Match original specification exactly (sample, controls, SE/clustering).
-- Do line-by-line translation first; avoid premature improvements.
-- Save intermediate objects as RDS.
+- Inventory the original package and record target values in:
+  `quality_reports/<paper>_replication_targets.md`
 
-## Phase 3: Verify Match
+## Phase 2: Baseline execution
 
-Tolerance defaults:
+- Match original sample/specification/SE computation exactly.
+- Save intermediate artifacts and reproducible scripts.
+
+## Phase 3: Tolerance checks
+
+Default tolerances:
 
 - counts/N: exact
-- point estimates: < 0.01
-- standard errors: < 0.05
-- p-values: same significance category
-- percentages: < 0.1 percentage points
+- point estimates: absolute diff < 0.01
+- standard errors: absolute diff < 0.05
+- significance category: match
 
-If mismatch:
+Write results to `quality_reports/<paper>_replication_report.md`.
 
-- do not proceed to extensions
-- isolate first divergent step
-- document investigation and resolution status
+## Phase 4: Extensions
 
-Save replication report to `quality_reports/<paper>_replication_report.md`.
-
-## Phase 4: Extend Only After PASS
-
-- After baseline passes all targets, add extensions/robustness analyses.
-- Keep baseline and extensions clearly separated.
+- Only after all baseline targets pass.
+- Keep baseline and extension code paths separated.

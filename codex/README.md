@@ -1,51 +1,21 @@
-# Codex-Native Workflow Assets
+# Codex Workflow Layer
 
-This directory ports relevant Claude workflow assets into Codex-native playbooks.
+This directory contains the runtime workflow logic for Codex.
 
-## How Codex Uses These Assets
+## What controls behavior
 
-Codex does not auto-run `.claude/skills/*` or `.claude/agents/*`.
-Instead, Codex uses:
+- `AGENTS.md`: short constitution and routing policy (always loaded)
+- `codex/workflows/*.md`: end-to-end execution loops by task type
+- `codex/skills/*.md`: reusable playbooks for common tasks
+- `codex/agents/*.md`: specialist review checklists
 
-- `AGENTS.md` for global policy and path-conditional behavior
-- `codex/skills/*.md` for workflow playbooks
-- `codex/agents/*.md` for specialist review checklists
-- `codex/workflows/*.md` for end-to-end orchestrator loops
-- `scripts/codex/*` for repeatable project scaffolding
+## Task routing
 
-## Ported Skills
+- Ideation/brainstorming: `codex/workflows/research-orchestrator.md` + `codex/skills/idea-sprint.md`
+- Literature review: `codex/workflows/literature-review.md`
+- Replication: `codex/workflows/replication-first.md`
+- Seminar slides from research: `codex/workflows/seminar-slides.md`
 
-All relevant skills from `.claude/skills/` are mirrored in `codex/skills/`:
+## Scaffolding scripts
 
-- commit, compile-latex, context-status, create-lecture
-- data-analysis, deploy, devils-advocate, extract-tikz
-- interview-me, learn, lit-review, pedagogy-review
-- proofread, qa-quarto, research-ideation, review-paper
-- review-r, slide-excellence, translate-to-quarto
-- validate-bib, visual-audit
-
-## Ported Agents
-
-All relevant agents from `.claude/agents/` are mirrored in `codex/agents/`:
-
-- beamer-translator, domain-reviewer, pedagogy-reviewer
-- proofreader, quarto-critic, quarto-fixer
-- r-reviewer, slide-auditor, tikz-reviewer, verifier
-
-## Research-First Workflows
-
-Use these orchestrator docs:
-
-- `codex/workflows/research-orchestrator.md`
-- `codex/workflows/literature-review.md`
-- `codex/workflows/replication-first.md`
-- `codex/workflows/slides-from-research.md`
-
-## Quick Start
-
-1. Create a scoped workspace with one of:
-   - `scripts/codex/new-ideation.sh <topic-slug>`
-   - `scripts/codex/new-lit-review.sh <topic-slug>`
-   - `scripts/codex/new-replication.sh <paper-slug>`
-2. Ask Codex to execute the corresponding workflow in `codex/workflows/`.
-3. Require outputs in `quality_reports/` and run verification/quality gates.
+Use the helpers in `scripts/codex/` to initialize workspaces and report stubs.

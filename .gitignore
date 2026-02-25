@@ -1,7 +1,3 @@
-# ==============================================================================
-# .gitignore for Academic Claude Code Projects
-# ==============================================================================
-
 # LaTeX build artifacts
 *.aux
 *.bbl
@@ -18,9 +14,6 @@
 *.run.xml
 *-blx.bib
 
-# Compiled PDFs (uncomment to track specific PDFs)
-# *.pdf
-
 # Python
 __pycache__/
 *.pyc
@@ -32,24 +25,22 @@ __pycache__/
 .RData
 .Rdata
 
-# OS files
+# OS / editors
 .DS_Store
 Thumbs.db
-
-# Claude Code local files (not shared across machines)
-.claude/settings.local.json
-.claude/state/
-
-# IDE
 .vscode/
 .idea/
 *.swp
 *.swo
 *~
 
-# Quarto rendering artifacts
-/.quarto/
+# Quarto render cache
+.quarto/
 
-# Output artifacts — uncomment lines below based on your preference
+# Local state
+.codex/
+
+# Optional generated outputs (uncomment if preferred)
+# presentations/published/
+# output/
 # *.rds
-# output/**/*.rds

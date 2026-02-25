@@ -6,10 +6,10 @@ Calculates objective quality scores (0-100) based on defined rubrics.
 Enforces quality gates: 80 (commit), 90 (PR), 95 (excellence).
 
 Usage:
-    python scripts/quality_score.py Quarto/Lecture6_Topic.qmd
-    python scripts/quality_score.py Quarto/Lecture6_Topic.qmd --summary
-    python scripts/quality_score.py Quarto/*.qmd
-    python scripts/quality_score.py Slides/Lecture01_Topic.tex
+    python scripts/quality_score.py presentations/quarto/Seminar_Topic.qmd
+    python scripts/quality_score.py presentations/quarto/Seminar_Topic.qmd --summary
+    python scripts/quality_score.py presentations/quarto/*.qmd
+    python scripts/quality_score.py presentations/beamer/Seminar_Topic.tex
     python scripts/quality_score.py scripts/R/Lecture06_simulations.R
 """
 
@@ -22,7 +22,7 @@ import re
 import json
 
 # ==============================================================================
-# SCORING RUBRIC (from .claude/rules/quality-gates.md)
+# SCORING RUBRIC
 # ==============================================================================
 
 QUARTO_RUBRIC = {
@@ -383,6 +383,21 @@ class QualityScorer:
         }
         self.auto_fail = False
 
+    @staticmethod
+    def _find_bib_file(filepath: Path) -> Path:
+        """Resolve bibliography path using repository-first conventions."""
+        repo_root = Path(__file__).resolve().parent.parent
+        candidates = [
+            repo_root / 'assets' / 'bibliography' / 'references.bib',
+            filepath.parent.parent / 'assets' / 'bibliography' / 'references.bib',
+            filepath.parent.parent / 'references.bib',
+            filepath.parent / 'references.bib',
+        ]
+        for candidate in candidates:
+            if candidate.exists():
+                return candidate
+        return candidates[0]
+
     def score_quarto(self) -> Dict:
         """Score Quarto lecture slides."""
         content = self.filepath.read_text(encoding='utf-8')
@@ -412,7 +427,7 @@ class QualityScorer:
             self.score -= 20
 
         # Check broken citations (LaTeX-style \cite patterns)
-        bib_file = self.filepath.parent.parent / 'Bibliography_base.bib'
+        bib_file = self._find_bib_file(self.filepath)
         broken_citations = IssueDetector.check_broken_citations(content, bib_file)
 
         # Also check Quarto-style @key citations
@@ -423,13 +438,14 @@ class QualityScorer:
             self.issues['critical'].append({
                 'type': 'broken_citation',
                 'description': f'Citation key not in bibliography: {key}',
-                'details': 'Add to Bibliography_base.bib or fix key',
+                'details': 'Add to assets/bibliography/references.bib or fix key',
                 'points': 15
             })
             self.score -= 15
 
         # Check plotly widgets (if HTML exists)
-        html_file = self.filepath.parent.parent / 'docs' / 'slides' / self.filepath.with_suffix('.html').name
+        repo_root = Path(__file__).resolve().parent.parent
+        html_file = repo_root / 'presentations' / 'published' / 'slides' / self.filepath.with_suffix('.html').name
         if html_file.exists():
             widget_count, _ = IssueDetector.check_plotly_widgets(html_file)
             expected_plotly = content.count('plotly::plot_ly')
@@ -509,16 +525,13 @@ class QualityScorer:
             return self._generate_report()
 
         # Check for undefined/broken citations (\cite, \citep, \citet patterns)
-        bib_file = self.filepath.parent.parent / 'Bibliography_base.bib'
-        if not bib_file.exists():
-            # Also check same directory
-            bib_file = self.filepath.parent / 'Bibliography_base.bib'
+        bib_file = self._find_bib_file(self.filepath)
         broken_citations = IssueDetector.check_broken_citations(content, bib_file)
         for key in broken_citations:
             self.issues['critical'].append({
                 'type': 'undefined_citation',
                 'description': f'Citation key not in bibliography: {key}',
-                'details': 'Add to Bibliography_base.bib or fix key',
+                'details': 'Add to assets/bibliography/references.bib or fix key',
                 'points': 15
             })
             self.score -= 15
@@ -677,22 +690,22 @@ def main():
         epilog="""
 Examples:
   # Score a single Quarto file
-  python scripts/quality_score.py Quarto/Lecture6_Topic.qmd
+  python scripts/quality_score.py presentations/quarto/Seminar_Topic.qmd
 
   # Score multiple files
-  python scripts/quality_score.py Quarto/*.qmd
+  python scripts/quality_score.py presentations/quarto/*.qmd
 
   # Score a Beamer/LaTeX file
-  python scripts/quality_score.py Slides/Lecture01_Topic.tex
+  python scripts/quality_score.py presentations/beamer/Seminar_Topic.tex
 
   # Score an R script
   python scripts/quality_score.py scripts/R/Lecture06_simulations.R
 
   # Summary only (no detailed issues)
-  python scripts/quality_score.py Quarto/Lecture6.qmd --summary
+  python scripts/quality_score.py presentations/quarto/Seminar_Topic.qmd --summary
 
   # Verbose output (include minor issues)
-  python scripts/quality_score.py Quarto/Lecture6.qmd --verbose
+  python scripts/quality_score.py presentations/quarto/Seminar_Topic.qmd --verbose
 
 Quality Thresholds:
   80/100 = Commit threshold (blocks if below)
