@@ -32,9 +32,11 @@
 ├── Preambles/header.tex         # LaTeX headers
 ├── Slides/                      # Beamer .tex files
 ├── Quarto/                      # RevealJS .qmd files + theme
+├── manuscript/                  # Research paper workspace (main/appendix/output)
 ├── docs/                        # GitHub Pages (auto-generated)
 ├── scripts/                     # Utility scripts + R code
 ├── quality_reports/             # Plans, session logs, merge reports
+│   └── specs/                   # Requirements specifications (MUST/SHOULD/MAY)
 ├── explorations/                # Research sandbox (see rules)
 ├── templates/                   # Session log, quality report templates
 └── master_supporting_docs/      # Papers and existing slides

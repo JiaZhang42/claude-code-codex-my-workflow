@@ -1,11 +1,11 @@
-# My Claude Code Setup
+# My Claude Code + Codex Workflow
 
-> **Work in progress.** This is not meant to be a polished guide for everyone. It's mostly a summary of how I've been using Claude Code for academic work — creating lecture slides, writing R scripts, managing Beamer-to-Quarto workflows, and so on. I keep learning new things, and as I do, I keep updating these files. This is just a way for me to share what I've figured out with friends and colleagues.
+> **Work in progress.** This is not meant to be a polished guide for everyone. It's mostly a summary of how I've been using AI coding agents for academic work — writing research papers, running R analyses, and generating high-quality seminar slides from research outputs. I keep learning new things, and as I do, I keep updating these files.
 
 **Live site:** [psantanna.com/claude-code-my-workflow](https://psantanna.com/claude-code-my-workflow/)
-**Last Updated:** 2026-02-15
+**Last Updated:** 2026-02-25
 
-A ready-to-fork starter kit for academics using [Claude Code](https://code.claude.com/docs/en/overview) with **LaTeX/Beamer + R + Quarto**. You describe what you want; Claude plans the approach, runs specialized agents, fixes issues, verifies quality, and presents results — like a contractor who handles the entire job. Extracted from a production PhD course (6 lectures, 800+ slides).
+A ready-to-fork starter kit for academics using [Claude Code](https://code.claude.com/docs/en/overview) and Codex-style agent workflows with **LaTeX/Beamer + R + Quarto**. The workflow is now **research-first**: manuscript + analysis are primary, while slides are generated for seminar presentation without lowering audit standards.
 
 ---
 
@@ -44,6 +44,15 @@ Then paste the following, filling in your project details:
 **What this does:** Claude reads all the configuration files, fills in your project name, institution, and preferences, then enters contractor mode — planning, implementing, reviewing, and verifying autonomously. You approve the plan and Claude handles the rest.
 
 **Prefer to configure manually?** See the [full guide](https://psantanna.com/claude-code-my-workflow/workflow-guide.html#sec-setup) for step-by-step manual setup instructions.
+
+### 3. Use with Codex
+
+Codex uses `AGENTS.md` as its policy/governance layer. This repository now includes a root `AGENTS.md` that mirrors core standards from the Claude workflow:
+
+- plan-first for non-trivial tasks
+- requirements specs for ambiguous requests
+- mandatory verification and quality gates
+- research-first orientation with full slide auditing retained
 
 ---
 
@@ -146,6 +155,7 @@ It covers:
 
 | Feature | What It Does |
 |---------|-------------|
+| Manuscript workspace | Dedicated `manuscript/` folder for paper drafting and appendices |
 | Exploration folder | Structured `explorations/` sandbox with graduate/archive lifecycle |
 | Fast-track workflow | 60/100 quality threshold for rapid prototyping |
 | Simplified orchestrator | implement → verify → score → done (no multi-round reviews) |
@@ -197,6 +207,14 @@ Rules use path-scoped loading: **always-on** rules load every session (~100 line
 | `constitutional-governance.md` | Template for defining non-negotiable principles vs. preferences |
 | `skill-template.md` | Academic skill creation template with domain-specific examples |
 
+### Research Manuscript Workspace (`manuscript/`)
+
+| Path | Purpose |
+|------|---------|
+| `manuscript/main/` | Main paper source files |
+| `manuscript/appendix/` | Appendix and supplemental derivations |
+| `manuscript/output/` | Rendered artifacts (PDF/HTML/DOCX, if tracked) |
+
 </details>
 
 ---
@@ -205,14 +223,15 @@ Rules use path-scoped loading: **always-on** rules load every session (~100 line
 
 | Tool | Required For | Install |
 |------|-------------|---------|
-| [Claude Code](https://code.claude.com/docs/en/overview) | Everything | `npm install -g @anthropic-ai/claude-code` |
+| [Claude Code](https://code.claude.com/docs/en/overview) | Claude-native workflow | `npm install -g @anthropic-ai/claude-code` |
+| Codex | Codex-native workflow via `AGENTS.md` | Use your Codex app/CLI setup |
 | XeLaTeX | LaTeX compilation | [TeX Live](https://tug.org/texlive/) or [MacTeX](https://tug.org/mactex/) |
 | [Quarto](https://quarto.org) | Web slides | [quarto.org/docs/get-started](https://quarto.org/docs/get-started/) |
 | R | Figures & analysis | [r-project.org](https://www.r-project.org/) |
 | pdf2svg | TikZ to SVG | `brew install pdf2svg` (macOS) |
 | [gh CLI](https://cli.github.com/) | PR workflow | `brew install gh` (macOS) |
 
-Not all tools are needed — install only what your project uses. Claude Code is the only hard requirement.
+Not all tools are needed — install only what your project uses. Use either Claude Code or Codex as your primary agent environment.
 
 ---
 
