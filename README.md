@@ -54,6 +54,13 @@ Codex uses `AGENTS.md` as its policy/governance layer. This repository now inclu
 - mandatory verification and quality gates
 - research-first orientation with full slide auditing retained
 
+Codex-native workflow assets are in `codex/`:
+
+- `codex/skills/` — playbooks ported from Claude skills
+- `codex/agents/` — specialist checklists ported from Claude agents
+- `codex/workflows/` — research-first orchestrators (ideation, lit review, replication, slides)
+- `scripts/codex/` — one-command scaffolding scripts
+
 ---
 
 ## How It Works
@@ -214,6 +221,18 @@ Rules use path-scoped loading: **always-on** rules load every session (~100 line
 | `manuscript/main/` | Main paper source files |
 | `manuscript/appendix/` | Appendix and supplemental derivations |
 | `manuscript/output/` | Rendered artifacts (PDF/HTML/DOCX, if tracked) |
+
+### Codex-Native Assets (`codex/` + `scripts/codex/`)
+
+| Path | Purpose |
+|------|---------|
+| `codex/README.md` | Index of Codex workflows and mapping from Claude assets |
+| `codex/skills/` | Ported workflow playbooks (lit review, ideation, QA, etc.) |
+| `codex/agents/` | Ported specialist review checklists (proofreader, verifier, etc.) |
+| `codex/workflows/` | End-to-end orchestrators for research, lit review, replication, and slides |
+| `scripts/codex/new-ideation.sh` | Scaffold an ideation exploration + spec/log stubs |
+| `scripts/codex/new-lit-review.sh` | Scaffold a literature review workspace + report stubs |
+| `scripts/codex/new-replication.sh` | Scaffold a replication project + targets/report/spec/log stubs |
 
 </details>
 

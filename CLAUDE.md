@@ -26,7 +26,9 @@
 ```
 [YOUR-PROJECT]/
 ├── CLAUDE.MD                    # This file
+├── AGENTS.md                    # Codex-native governance and path-conditional behavior
 ├── .claude/                     # Rules, skills, agents, hooks
+├── codex/                       # Codex-native skills, agent checklists, and workflows
 ├── Bibliography_base.bib        # Centralized bibliography
 ├── Figures/                     # Figures and images
 ├── Preambles/header.tex         # LaTeX headers
